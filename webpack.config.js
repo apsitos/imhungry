@@ -8,14 +8,24 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.scss$/, loader: 'style!css!sass' }
+      { test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      { test: /\.scss$/,
+        use: [
+          'style-loader',
+          'sass-loader'
+        ]
+      }
     ]
   },
   devServer: {
@@ -23,7 +33,7 @@ module.exports = {
     inline: true
   },
   resolve: {
-    extensions: ['*', '.js', '.json', '.jsx']
+    extensions: ['.js', '.json', '.jsx', '.css', '.scss']
   },
   externals: {
     'cheerio': 'window',
