@@ -1,8 +1,11 @@
+const { resolve } = require('path');
+const webpack = require('webpack');
+
 module.exports = {
   entry: './app',
   output: {
-    path: './build',
-    filename: './bundle.js'
+    path: '/build',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -20,7 +23,7 @@ module.exports = {
     inline: true
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx']
+    extensions: ['*', '.js', '.json', '.jsx']
   },
   externals: {
     'cheerio': 'window',
