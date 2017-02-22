@@ -1,5 +1,5 @@
 const request = require('request')
-const API_KEY = `AIzaSyC0tw-FgBeIrwwIYl6pf5M_e7IqC92cfx4`
+import API_KEY from '../secret'
 const BASE_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.7257155,-104.9713034&radius=1600&keyword=restaurant&pagetoken&key=${API_KEY}`
 
 function getPlaces(req, res, next) {
