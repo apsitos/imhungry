@@ -26,10 +26,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/assets', express.static(path.join(__dirname, '../app/assets')));
 
-app.get('/', function (req, res) { res.sendFile(path.join(__dirname, '/../index.html')) });
+app.get('/', function (req, res) { res.sendFile(path.join(__dirname, '/../build/index.html')) });
 
 app.use('/api', router);
-app.get('/*', function (req, res) { res.sendFile(path.join(__dirname, '/../index.html')) });
+app.get('/*', function (req, res) { res.sendFile(path.join(__dirname, '/../build/index.html')) });
 
 app.listen(port);
 
