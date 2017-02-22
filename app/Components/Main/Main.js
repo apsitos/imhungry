@@ -1,11 +1,13 @@
 import React from 'react';
+import Header from '../Header/Header';
 require('./main-styles');
+// import getPlaces from '../../../src/controller'
 
 export default class Main extends React.Component {
   componentDidMount() {
-    fetch(`getPlaces`)
+    fetch(`/api/places`)
       .then((response) => {
-      console.log(response)
+        console.log(response)
       return response.json()
     }).then((data) => {
       console.log(data)
@@ -14,7 +16,9 @@ export default class Main extends React.Component {
 
   render() {
     return(
-      <div>Connected</div>
+      <div>
+        <Header />
+      </div>
     )
   }
 }
