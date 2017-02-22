@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
+const API_KEY = `AIzaSyC0tw-FgBeIrwwIYl6pf5M_e7IqC92cfx4`
+const COORDS_URL = `https://maps.googleapis.com/maps/api/geocode/json?address=`
 require('./main-styles');
 // import getPlaces from '../../../src/controller'
 
@@ -8,41 +10,45 @@ export default class Main extends React.Component {
   constructor() {
     super();
     this.state= {
-      address:''
+      address:'',
+      lat: '',
+      long: ''
     }
   }
 
-  geocodeAddress() {
-    let geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: this.state.address }, function(results, status){
-      if(status == 'OK') {
-        console.log(results);
-      }
+  setLocation(e) {
+    this.setState({ address: e.target.value })
+  }
+
+  getCoords(){
+    fetch(`${COORDS_URL}${this.state.address}&key=${API_KEY}`)
+    .then((res) => {
+      return res.json()
+    }).then((res) => {
+      this.setState({
+        lat:res.results[0].geometry.location.lat,
+        lon:res.results[0].geometry.location.lng
+      })
     })
   }
 
-
-  getBars() {
+  getBars(location) {
     fetch(`/api/places`)
     .then((response) => {
-      console.log(response)
       return response.json()
     }).then((data) => {
-      console.log(data)
     })
   }
-
 
   render() {
     return(
       <div>
         <Header />
         <input type='text'
-          value={this.state.address}
-          onChange={ (e)=>this.setState({ address: e.target.value }) }
+          onChange={ (e) => }
           placeholder='Enter your address'
         />
-        <Button id='findBars' handleClick={this.getCoordinates.bind(this)} name="Find a Bar!" />
+        <Button id='findBars' handleClick={this.getCoords.bind(this)} name="Find a Bar!" />
       </div>
     )
   }
