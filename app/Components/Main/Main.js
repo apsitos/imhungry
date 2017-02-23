@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
+import Location from '../Location/Location';
 require('./main-styles');
 // import getPlaces from '../../../src/controller'
 
@@ -11,7 +13,7 @@ export default class Main extends React.Component {
       address:'',
       lat: '',
       long: '',
-      allBars: []
+      barArray: []
     }
   }
 
@@ -24,11 +26,12 @@ export default class Main extends React.Component {
     .then((response) => {
       return response.json()
     }).then((data) => {
-      this.setState({ allBars: data });
+      this.setState({ barArray: data.results });
     })
   }
 
   render() {
+    const cloned = React.cloneElement(this.props.children, {barArray: this.state.barArray})
     return(
       <div>
         <Header />
@@ -37,8 +40,12 @@ export default class Main extends React.Component {
           onChange={ (e) => this.setLocation(e) }
           placeholder='Enter your address'
         />
-        <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!" />
-        <
+        <Link to='/location'>
+          <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!" />
+        </Link>
+        <div>
+          {cloned}
+        </div>
       </div>
     )
   }

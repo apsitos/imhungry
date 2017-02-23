@@ -1,6 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Routes from './routes'
+import { Router, hashHistory, Route, IndexRoute } from 'react-router';
+import Main from './Components/Main/Main';
+import Location from './Components/Location/Location'
 
 
-render(<Routes />, document.querySelector('.application'))
+render(
+  <Router>
+    <Route path="/" component={Main}>
+      <Route path='location' component={Location}/>
+    </Route>
+  </Router>
+  , document.querySelector('.application'))
