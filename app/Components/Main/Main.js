@@ -3,12 +3,12 @@ import { Link } from 'react-router';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
 import Location from '../Location/Location';
+import getCoords from '../Helpers/Coordinates';
 require('./main-styles');
-// import getPlaces from '../../../src/controller'
 
 export default class Main extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state= {
       address:'',
       lat: '',
@@ -22,16 +22,18 @@ export default class Main extends React.Component {
   }
 
   getBars(location) {
-    fetch(`/api/places`)
+    fetch(`/api/places?lat=${this.state.lat}&long=${this.state.long}`)
     .then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({ barArray: data.results });
+    }).catch((err) => {
+      console.log('error',err);
     })
   }
 
+
   render() {
-    const cloned = React.cloneElement(this.props.children, {barArray: this.state.barArray})
     return(
       <div>
         <Header />
@@ -40,16 +42,15 @@ export default class Main extends React.Component {
           onChange={ (e) => this.setLocation(e) }
           placeholder='Enter your address'
         />
-        <Link to='/location'>
           <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!" />
-        </Link>
         <div>
-          {cloned}
+          <Location />
         </div>
       </div>
     )
   }
 }
 
+// const cloned = React.cloneElement(this.props.children, {barArray: this.state.barArray})
 // lat: 39.7257155
 // long: -104.9713034
