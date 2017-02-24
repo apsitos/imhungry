@@ -6,3 +6,5 @@ const coordinates = (state = [], action) => {
       return state
   }
 }
+
+export default coordinates;
