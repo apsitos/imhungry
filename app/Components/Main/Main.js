@@ -11,6 +11,7 @@ export default class Main extends React.Component {
     super(props);
     this.state= {
       address:'',
+      formattedAddress: '',
       lat: '',
       long: '',
       barArray: []
@@ -24,14 +25,14 @@ export default class Main extends React.Component {
   formatAddress() {
     let formattedAddress = this.state.address.trim().split(' ')
     .map(i => i.concat('+')).join()
-    this.setState({ address: formattedAddress})
+    this.setState({ formattedAddress: formattedAddress})
   }
 
-  getCoords(address) {
+  getCoords() {
     const API_KEY = `AIzaSyC0tw-FgBeIrwwIYl6pf5M_e7IqC92cfx4`;
     const COORDS_URL = `https://maps.googleapis.com/maps/api/geocode/json?address=`;
-
-    fetch(`${COORDS_URL}${address}&key=${API_KEY}`)
+    console.log(this.state.address)
+    fetch(`${COORDS_URL}${this.state.address}&key=${API_KEY}`)
     .then(res => {
       console.log(res)
       return res.json()
@@ -60,9 +61,8 @@ export default class Main extends React.Component {
 
   showBars() {
     this.formatAddress()
-    .then((address) => {console.log(address)
-    this.getCoords(address)})
-    .then((location) => this.getBars(location))
+    .then(this.getCoords())
+    .then(this.getBars(location))
   }
 
 
@@ -75,7 +75,7 @@ export default class Main extends React.Component {
           onChange={ (e) => this.setLocation(e) }
           placeholder='Enter your address'
         />
-        <Button id='findBars' handleClick={this.showBars.bind(this)} name="Find a Bar!"/>
+        <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!"/>
         <div>
           <Location bars={this.state.barArray}/>
           words
