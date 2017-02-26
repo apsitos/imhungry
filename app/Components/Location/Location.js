@@ -1,9 +1,32 @@
 import React from 'react';
 
-const Location = (props) => {
-  const allBars = props.barArray.map((barObj) => {
-    console.log(barObj.results);
+export default class Location extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: '',
+      long: ''
+    }
+  }
+
+
+allBars() {
+  return this.props.bars.map((barObj) => {
+    console.log(barObj)
+    return(
+      <div key={barObj.id}>
+        <h2>{barObj.name}</h2>
+      </div>
+    )
   })
 }
 
-export default Location;
+  render() {
+    return(
+      <div id="found-location">
+        {this.allBars()}
+
+      </div>
+    )
+  }
+}

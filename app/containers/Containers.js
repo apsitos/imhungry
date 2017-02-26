@@ -1,4 +1,5 @@
-// import Coordinates from '../Helpers/Coordinates';
+import { connect } from 'react-redux'
+import { findCoordinates } from '../actions'
 import Main from '../Main/Main';
 
 const mapStateToProps = (state) => {
