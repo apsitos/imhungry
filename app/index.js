@@ -12,8 +12,8 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_
 const store = createStore(rootReducer, devTools);
 
 render(
-  <Provider >
-    <Router browserhistory={hashHistory}>
+  <Provider store={store}>
+    <Router history={hashHistory}>
       <Route path="/" component={Main}>
         <Route path='location' component={Location}/>
       </Route>
