@@ -1,19 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Header from '../Header/Header';
 import Button from '../Button/Button';
 import Location from '../Location/Location';
-import Coordinates from '../../Helpers/Coordinates';
+import getCoords from '../Helpers/Coordinates';
 require('./main-styles');
-// import getPlaces from '../../../src/controller'
 
 export default class Main extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state= {
       address:'',
       lat: '',
       long: '',
-      allBars: []
+      barArray: []
     }
   }
 
@@ -22,14 +22,16 @@ export default class Main extends React.Component {
   }
 
   getBars(location) {
-    Coordinates.then()
     fetch(`/api/places?lat=${this.state.lat}&long=${this.state.long}`)
     .then((response) => {
       return response.json()
     }).then((data) => {
-      this.setState({ allBars: data });
+      this.setState({ barArray: data.results });
+    }).catch((err) => {
+      console.log('error',err);
     })
   }
+
 
   render() {
     return(
@@ -42,7 +44,7 @@ export default class Main extends React.Component {
         />
           <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!" />
         <div>
-          {cloned}
+          <Location />
         </div>
       </div>
     )
