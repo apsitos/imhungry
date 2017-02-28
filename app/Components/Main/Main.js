@@ -10,8 +10,6 @@ export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      address:'',
-      // formattedAddress: '',
       lat: '',
       long: '',
       barArray: []
@@ -20,46 +18,24 @@ export default class Main extends React.Component {
 
   setLocation(e) {
     this.setState({ address: e.target.value })
-    // this.setState({ address: '90 Corona St' })
-  }
-
-  formatAddress() {
-    debugger
-    return this.state.address.trim().split(' ')
-    .map(i => i.concat('+')).join()
   }
 
   getCoords() {
-    const API_KEY = `AIzaSyC0tw-FgBeIrwwIYl6pf5M_e7IqC92cfx4`;
-    const COORDS_URL = `https://maps.googleapis.com/maps/api/geocode/json?address=`;
-
-    return new Promise ((resolve, reject) => {
-      const formattedAddress = this.formatAddress();
-      fetch(`${COORDS_URL}${formattedAddress}&key=${API_KEY}`)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        if (data.results) {
-          this.setState({
-            lat: data.results[0].geometry.location.lat,
-            long: data.results[0].geometry.location.lng,
-          });
-          return resolve();
-        } else {
-          reject();
-        }
-      })
-      .catch((err) => {
-        throw new Error(err);
-      })
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      this.setState({lat: lat, long: long})
+      console.log(this.state.lat, this.state.long);
+      this.getBars();
     })
   }
 
-  getBars(location) {
+  getBars() {
     fetch(`/api/places?lat=${this.state.lat}&long=${this.state.long}`)
     .then((response) => {
       const data = response.json();
+      console.log(data);
       this.setState({ barArray: data.results });
     })
     .catch((err) => {
@@ -68,10 +44,7 @@ export default class Main extends React.Component {
   }
 
   showBars() {
-    // this.formatAddress()
-    // .then(this.getCoords())
-    // .then(this.getBars(location))
-    this.getCoords().then(this.getBars)
+    this.getCoords()
   }
 
 
@@ -79,12 +52,7 @@ export default class Main extends React.Component {
     return(
       <div>
         <Header />
-        <input type='text'
-          value = {this.state.address}
-          onChange={ (e) => this.setLocation(e) }
-          placeholder='Enter your address'
-        />
-        <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!"/>
+        <Button id='findBars' handleClick={this.showBars.bind(this)} name="Find a Bar!"/>
         <div>
           <Location bars={this.state.barArray}/>
           words
