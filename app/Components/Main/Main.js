@@ -48,7 +48,7 @@ export default class Main extends React.Component {
     return(
       <div>
         <Header />
-        <Button id='findBars' handleClick={this.getBars.bind(this)} name="Find a Bar!"/>
+        <Button id='findBars' handleClick={this.showBars.bind(this)} name="Find a Bar!"/>
         <div>
           <Location bars={this.state.barArray}/>
           words
