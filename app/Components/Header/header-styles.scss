@@ -1,0 +1,8 @@
+@import "../../assets/styles";
+
+.header {
+  color: $main-color;
+  font-family: $header-text;
+  font-size: 90px;
+  display: flex;
+}

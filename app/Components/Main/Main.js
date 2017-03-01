@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Header from '../Header/Header';
+import Landing from '../Landing/Landing';
 import Button from '../Button/Button';
 import Location from '../Location/Location';
-// import getCoords from '../../Helpers/Coordinates'
 require('./main-styles');
 
 export default class Main extends React.Component {
@@ -44,12 +44,14 @@ export default class Main extends React.Component {
 
   render() {
     return(
-      <div>
+      <div id='wrapper'>
         <Header />
+        <Landing />
         <Button id='findBars' handleClick={this.showBars.bind(this)} name="Find a Bar!"/>
         <div>
-          <Location bars={this.state.barArray}/>
-          words
+          <Link>
+            <Location bars={this.state.barArray}/>
+          </Link>
         </div>
       </div>
     )
