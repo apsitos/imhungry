@@ -18,11 +18,9 @@ export default class Main extends React.Component {
 
   getCoords() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       this.setState({lat: lat, long: long})
-      console.log(this.state.lat, this.state.long);
     })
   }
 
