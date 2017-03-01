@@ -44,11 +44,14 @@ export default class Main extends React.Component {
 
   render() {
     return(
-      <div id='wrapper'>
-        <Header />
-        <Landing />
-        <Button id='findBars' handleClick={this.showBars.bind(this)} name="Find a Bar!"/>
-        <div>
+      <div className='img'>
+        <div className='wrapper'>
+          <Header />
+          <Landing />
+          <div id="searchbar">
+            <p>Find a Restaurant Nearby</p>
+            <Button id='search-btn' handleClick={this.showBars.bind(this)} name="Click Here!"/>
+          </div>
           <Link>
             <Location bars={this.state.barArray}/>
           </Link>

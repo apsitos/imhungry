@@ -3,6 +3,10 @@
 .header {
   color: $main-color;
   font-family: $header-text;
-  font-size: 90px;
+  font-size: 125px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 75px;
+  margin-bottom: 100px;
 }

@@ -1,0 +1,18 @@
+@import '../../assets/styles';
+
+#found-location{
+  @include box;
+  text-align: center;
+}
+
+.name {
+  color: $main-color;
+  font-size: 64px;
+  font-family: $header-text;
+}
+
+.address {
+  color: $main-color;
+  font-size: 48px;
+  font-family: $body-text;
+}

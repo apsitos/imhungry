@@ -1,11 +1,12 @@
 import React from 'react';
+require('./location-style');
 
 export default class Location extends React.Component {
 
   oneBar() {
     let allBars = this.props.bars.map((barObj) => {
       return(
-        <div key={barObj.id}>
+        <div key={barObj.id} id="found-location">
           <h3 className='name'>{barObj.name}</h3>
           <h4 className='address'>{barObj.vicinity}</h4>
         </div>
@@ -16,7 +17,7 @@ export default class Location extends React.Component {
 
   render() {
     return(
-      <div id="found-location">
+      <div>
         {this.oneBar()}
       </div>
     )

@@ -1,7 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Cardo:400,700|Josefin+Sans:400,700');
+@import './reset';
+@import url('https://fonts.googleapis.com/css?family=Cardo:400,700|Josefin+Sans');
 
 $body-text: 'Josefin Sans', sans-serif;
 $header-text: 'Cardo', serif;
 
 $main-color: #FEE715;
 $background-color: #3850a0;
+
+@mixin box {
+  background-color: $background-color;
+  opacity: .6;
+  width: 900px;
+  height: 100px;
+  padding: 25px 20px;
+  margin: auto;
+}
