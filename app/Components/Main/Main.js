@@ -23,24 +23,24 @@ export default class Main extends React.Component {
       const long = position.coords.longitude;
       this.setState({lat: lat, long: long})
       console.log(this.state.lat, this.state.long);
-      this.getBars();
     })
   }
 
-  getBars() {
+  getBars(location) {
     fetch(`/api/places?lat=${this.state.lat}&long=${this.state.long}`)
     .then((response) => {
-      const data = response.json();
-      console.log(data);
+      return response.json()
+    }).then((data) => {
       this.setState({ barArray: data.results });
     })
-    .catch((err) => {
-      throw new Error ('getBars' ,err);
+    .catch(() => {
+      console.log('getBars: nope')
     })
   }
 
   showBars() {
-    this.getCoords()
+    this.getCoords();
+    this.getBars(location);
   }
 
 
