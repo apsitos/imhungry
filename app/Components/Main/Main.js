@@ -21,6 +21,8 @@ export default class Main extends React.Component {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       this.setState({lat: lat, long: long})
+      console.log(this.state.lat, this.state.long);
+      this.getBars(location);
     })
   }
 
@@ -38,7 +40,6 @@ export default class Main extends React.Component {
 
   showBars() {
     this.getCoords();
-    this.getBars(location);
   }
 
 
