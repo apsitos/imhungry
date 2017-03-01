@@ -1,11 +1,11 @@
 import React from 'react';
-// require './header-styles'
+require ('./header-styles');
 
 const Header = () => {
   return (
     <div>
-      <h1>
-        Bar Locator
+      <h1 className='header'>
+        RESTAURANT LOCATOR
       </h1>
     </div>
   )

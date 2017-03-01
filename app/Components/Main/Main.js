@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Header from '../Header/Header';
+import Landing from '../Landing/Landing';
 import Button from '../Button/Button';
 import Location from '../Location/Location';
-// import getCoords from '../../Helpers/Coordinates'
 require('./main-styles');
 
 export default class Main extends React.Component {
@@ -21,6 +21,7 @@ export default class Main extends React.Component {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       this.setState({lat: lat, long: long})
+      this.getBars(location);
     })
   }
 
@@ -31,25 +32,29 @@ export default class Main extends React.Component {
     }).then((data) => {
       this.setState({ barArray: data.results });
     })
-    .catch(() => {
-      console.log('getBars: nope')
+    .catch((error) => {
+      console.log('getBars: nope', error)
     })
   }
 
   showBars() {
     this.getCoords();
-    this.getBars(location);
   }
 
 
   render() {
     return(
-      <div>
-        <Header />
-        <Button id='findBars' handleClick={this.showBars.bind(this)} name="Find a Bar!"/>
-        <div>
-          <Location bars={this.state.barArray}/>
-          words
+      <div className='img'>
+        <div className='wrapper'>
+          <Header />
+          <Landing />
+          <div id="searchbar">
+            <p>Find a Restaurant Nearby</p>
+            <Button id='search-btn' handleClick={this.showBars.bind(this)} name="Click Here!"/>
+          </div>
+          <Link>
+            <Location bars={this.state.barArray}/>
+          </Link>
         </div>
       </div>
     )

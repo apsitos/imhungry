@@ -1,0 +1,19 @@
+@import "../../assets/styles";
+
+#pitch-box{
+  @include box;
+
+  p{
+    margin: auto;
+    justify-content: center;
+  }
+}
+
+.pitch-words {
+  font-family: $body-text;
+  font-size: 40px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

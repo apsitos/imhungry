@@ -1,12 +1,13 @@
 @import '../../assets/styles';
 
-button {
+#search-btn {
   background: #3850A0;
   color: #FEE715;
-  font-size: 18px;
+  font-size: 30px;
   font-family: $body-text;
   text-align: center;
   border-radius: 40px;
   height: 41px;
   width: 190px;
+  margin-left: 10px;
 }
