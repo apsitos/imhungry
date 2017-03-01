@@ -1,11 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import './styles';
+import { Router, hashHistory, Route, IndexRoute } from 'react-router';
+import Main from './Components/Main/Main';
+import Location from './Components/Location/Location'
 
-const App = () => {
-  return (
-    <div>Howdy Pardner!</div>
-  )
-}
-
-render(<App />, document.querySelector('.application'))
+render(
+    <Router history={hashHistory}>
+      <Route path="/" component={Main}>
+        <Route path='location' component={Location}/>
+      </Route>
+    </Router>
+  , document.querySelector('.application'))
