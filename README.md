@@ -10,7 +10,7 @@ Denver has a lot of good restaurants. Sometimes there are too many to choose fro
 
 #### Example:   
 
-![Screenshot of Live Site]()
+![Screenshot of Live Site](https://github.com/apsitos/Wheel/blob/master/app/assets/Final.png)
 
 ## Installation and Setup Instructions
 
