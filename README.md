@@ -1,8 +1,6 @@
 ## Project Name & Pitch
 
-#### Example:
-
-Restaurant Locator
+#### Restaurant Locator:
 
 Denver has a lot of good restaurants. Sometimes there are too many to choose from, you’re new to town, or your dining companions can’t agree. This is an app that will help you choose a restaurant based on your location when you can’t make a decision.
 
