@@ -55,6 +55,13 @@ describe('<Main />', () => {
     expect(wrapper.find('Location')).to.have.length(1);
   });
 
+  it.skip('throws an error when data is not received', () => {
+    sinon.stub(error, 'catch');
+    const wrapper = mount(<Main />);
+    let error = error.catch('error')
+    expect(wrapper.find('error')).to.equal('error')
+  })
+
   it.skip('grabs location data', () => {
     const geoLoc = sinon.stub(Main, getCoords);
     const wrapper = mount(<Main />);
