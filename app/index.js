@@ -6,10 +6,12 @@ import Location from './Components/Location/Location';
 import Landing from './Components/Landing/Landing';
 
 render(
+  <Provider>
     <Router history={hashHistory}>
       <Route path="/" component={Main}>
         <IndexRoute component={Landing} />
         <Route path='/location' component={Location}/>
       </Route>
     </Router>
+  </Provider>
   , document.querySelector('.application'))
