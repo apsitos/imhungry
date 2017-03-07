@@ -7,7 +7,7 @@ import Location from './Components/Location/Location'
 render(
     <Router history={hashHistory}>
       <Route path="/" component={Main}>
-        <Route path='location' component={Location}/>
+        <Route path='/location' component={Location}/>
       </Route>
     </Router>
   , document.querySelector('.application'))
