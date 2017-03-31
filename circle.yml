@@ -14,8 +14,8 @@ deployment:
   staging:
     branch: staging
     heroku:
-      appName: <staging name>
+      appname: <staging name>
   production:
     branch: master
     heroku:
-      appName: <appName>
+      appname: <appName>
