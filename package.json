@@ -8,7 +8,7 @@
     "dev-server": "webpack-dev-server --hot --inline --content-base --history-api-fallback",
     "start": "npm build && nodemon src/app.js",
     "lint": "eslint app/*.js",
-    "test": "mocha -w --compilers js:babel-core/register --require helpers/test-setup.js app/**/*.spec.js"
+    "test": "mocha -w --compilers js:babel-core/register app/**/*.spec.js"
   },
   "keywords": [],
   "author": "Annastasia Psitos",

@@ -9,3 +9,13 @@ test:
   override:
     - npm run lint
     - npm run test
+
+deployment:
+  staging:
+    branch: staging
+    heroku:
+      appName: <staging name>
+  production:
+    branch: master
+    heroku:
+      appName: <appName>
