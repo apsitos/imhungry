@@ -1,5 +1,5 @@
 import React from 'react';
-require ('./landing-style');
+require ('./landing-style.scss');
 
 const Landing = () => {
   return(

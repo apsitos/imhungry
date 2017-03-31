@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Landing from '../Landing/Landing';
 import Button from '../Button/Button';
 import Location from '../Location/Location';
-require('./main-styles');
+require('./main-styles.scss');
 
 export default class Main extends React.Component {
   constructor(props) {

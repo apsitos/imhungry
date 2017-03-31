@@ -1,5 +1,5 @@
 import React from 'react';
-require('./location-style');
+require('./location-style.scss');
 
 export default class Location extends React.Component {
 
