@@ -1,10 +1,11 @@
-const { resolve } = require('path');
+const path = require('path');
+const resolve = path.resolve;
 const webpack = require('webpack');
 
 module.exports = {
   entry: './app',
   output: {
-    path: '/build',
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js'
   },
   module: {
