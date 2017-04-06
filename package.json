@@ -39,7 +39,6 @@
     "sinon": "^1.17.7",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.2.1",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-dev-server": "^2.4.1",
@@ -53,6 +52,7 @@
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "webpack": "^2.2.1"
   }
 }
