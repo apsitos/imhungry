@@ -1,5 +1,6 @@
 const request = require('request');
-const API_KEY = `AIzaSyC0tw-FgBeIrwwIYl6pf5M_e7IqC92cfx4`
+const config = require('../config.env');
+const API_KEY = (config.API_KEY);
 
 function getPlaces(req, res, next) {
   console.log(req.query)

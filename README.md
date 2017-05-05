@@ -10,28 +10,6 @@ Denver has a lot of good restaurants. Sometimes there are too many to choose fro
 
 ![Screenshot of Live Site](https://github.com/apsitos/Wheel/blob/master/app/assets/Final.png)
 
-## Installation and Setup Instructions
-
-#### Example:  
-
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
-
-Installation:
-
-`npm install`  
-
-To Run Test Suite:  
-
-`npm test`  
-
-To Start Server:
-
-`npm start`  
-
-To Visit App:
-
-`localhost:3000/#`  
-
 ## Reflection
 
 This was a two-week project built at the end of the third module at Turing School for Software and Design. Project goals included using technologies learned up until now and using documentation.
