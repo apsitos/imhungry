@@ -38,7 +38,18 @@ export default class Main extends React.Component {
   }
 
   showBars() {
+    this.waitForIt();
     this.getCoords();
+  }
+
+  waitForIt() {
+    if (this.state.barArray === []) {
+      return (
+        <div>
+          <p className="pitch-words">Please wait while we get your selection</p>
+        </div>
+      )
+    }
   }
 
 
@@ -60,6 +71,3 @@ export default class Main extends React.Component {
     )
   }
 }
-
-// lat: 39.7257155
-// long: -104.9713034
